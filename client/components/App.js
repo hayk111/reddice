@@ -1,11 +1,15 @@
 import React from 'react'
 import { hot } from 'react-hot-loader'
-import Greetings from './Greetings'
+import Routes from '../routes'
+import { withRouter } from 'react-router-dom'
 
 class App extends React.Component {
     render() {
         return (
-            <Greetings />
+            <div>
+                <Routes />
+                {this.props.children}
+            </div>
         );
     }
 }
