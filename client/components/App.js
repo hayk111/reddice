@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom'
 class App extends React.Component {
     render() {
         return (
-            <div>
+            <div className="container-fluid">
                 <Routes />
                 {this.props.children}
             </div>
