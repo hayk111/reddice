@@ -5,12 +5,13 @@ import map from 'lodash/map'
 import validateInput from '../../../server/shared/validations/signup'
 import TextFieldGroup from '../common/TextFieldGroup'
 import classnames from 'classnames'
+import { withRouter } from 'react-router-dom'
 
 class SignUpForm extends React.Component {
 
     constructor(props) {
-        console.log('props', props.userSignupRequest)
         super(props)
+
         this.state = {
             username: '',
             email: '',
@@ -41,12 +42,12 @@ class SignUpForm extends React.Component {
 
     onSubmit(e) {
         e.preventDefault()
-
+        console.log('state here', this.state)
         if(this.isValid()) {
             this.setState({ errors: {}, isLoading: true })
             this.props.userSignupRequest(this.state)
-            .then(data => {})
-            .catch(data => { this.setState({ errors: data.response.data, isLoading: false}) })
+            .then(() => { this.props.history.push('/')})
+            .catch(data => { console.log(data); this.setState({ errors: data.response.data, isLoading: false}) })
         }
     }
 
@@ -57,7 +58,6 @@ class SignUpForm extends React.Component {
 
         const { errors } = this.state
 
-        console.log(errors)
         return (
             <form onSubmit={this.onSubmit}>
                 <h1>Join our community!</h1>
@@ -126,4 +126,4 @@ SignUpForm.propTypes = {
     userSignupRequest: PropTypes.func.isRequired
 }
 
-export default SignUpForm;
+export default withRouter(SignUpForm);

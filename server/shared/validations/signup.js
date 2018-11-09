@@ -28,8 +28,8 @@ export default function validateInput(data) {
       errors.passwordConfirmation = 'Passwords must match';
     }
   
-    if (isEmpty(data.timezone)) {
-      errors.timezone = 'This field is required';
+    if (isEmpty(data.timeZone)) {
+      errors.timeZone = 'This field is required';
     }
     
   
